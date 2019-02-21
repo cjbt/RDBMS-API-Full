@@ -1,5 +1,6 @@
 const express = require('express');
 const cohortsRoute = require('./data/routes/cohortsRoute');
+const studentsRoute = require('./data/routes/studentsRoute');
 const server = express();
 server.use(express.json());
 
@@ -8,4 +9,6 @@ server.get('/', (req, res) => {
 });
 
 server.use('/api/cohorts', cohortsRoute);
+
+server.use('/api/students', studentsRoute);
 module.exports = server;
