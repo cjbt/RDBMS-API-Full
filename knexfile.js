@@ -8,8 +8,7 @@ module.exports = {
     // connection: {
     //   filename: './dev.sqlite3'
     // },
-    connection:
-      'postgres://fyocylskzbkjvk:502eb472b4a15bd0f9dff65aaddc5c5e5a2c61217229d8bd22858f1bb8ca65ae@ec2-54-83-44-4.compute-1.amazonaws.com:5432/derde4t91ehk19',
+    connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     migrations: {
       tableName: 'knex_migrations',
