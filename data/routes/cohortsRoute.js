@@ -5,9 +5,9 @@ const route = express.Router();
 // post new cohorts
 
 route.post('/', (req, res) => {
-  const body = req.body;
+  const { name } = req.body;
   db('cohorts')
-    .insert(body)
+    .insert({ name })
     .then(post => {
       res.status(201).json(post);
     })
@@ -51,18 +51,32 @@ route.get('/:id', (req, res) => {
 
 route.get('/:id/students', (req, res) => {
   const id = req.params.id;
-  db('cohorts').where();
+  db('cohorts')
+    .join()
+    .select()
+    .where()
+    .then()
+    .catch();
 });
 
 // put, update cohort with matching id
 
 route.put('/:id', (req, res) => {
   const id = req.params.id;
-  db('cohorts')
-    .where({ id })
-    .update()
-    .then()
-    .catch();
+  const { name } = req.body;
+  if (!name) {
+    res.status(400).json({ message: 'you need a name there bud' });
+  } else {
+    db('cohorts')
+      .where({ id })
+      .update({ name })
+      .then(post => {
+        res.status(200).json(post);
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      });
+  }
 });
 
 // delete specific cohort by id
@@ -72,8 +86,12 @@ route.delete('/:id', (req, res) => {
   db('cohorts')
     .where({ id })
     .del()
-    .then()
-    .catch();
+    .then(ids => {
+      res.status(200).json(ids);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
 });
 
 module.exports = route;
