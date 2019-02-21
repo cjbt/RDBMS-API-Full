@@ -20,8 +20,12 @@ route.post('/', (req, res) => {
 
 route.get('/', (req, res) => {
   db('cohorts')
-    .then()
-    .catch();
+    .then(cohorts => {
+      res.status(200).json(cohorts);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
 });
 
 // get by id
@@ -30,8 +34,17 @@ route.get('/:id', (req, res) => {
   const id = req.params.id;
   db('cohorts')
     .where({ id })
-    .then()
-    .catch();
+    .first()
+    .then(post => {
+      if (post) {
+        res.status(200).json(post);
+      } else {
+        res.status(404).json({ message: 'id does not exist' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
 });
 
 // get all students from specified cohort
