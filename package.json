@@ -1,0 +1,31 @@
+{
+  "name": "RDBMS-API-Full",
+  "version": "1.0.0",
+  "description": "## Topics",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjbt/RDBMS-API-Full.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjbt/RDBMS-API-Full/issues"
+  },
+  "homepage": "https://github.com/cjbt/RDBMS-API-Full#readme",
+  "devDependencies": {
+    "nodemod": "^1.5.19"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "pg": "^7.8.1",
+    "sqlite3": "^4.0.6"
+  }
+}
